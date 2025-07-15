@@ -25,3 +25,5 @@ cabal.project.local~
 
 .env
 .envrc
+auth-token.secret
+guildid.secret
