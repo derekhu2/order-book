@@ -42,7 +42,7 @@ packages:
 #
 # extra-deps: []
 extra-deps:
-- discord-haskell-HACKAGE_VERSION
+- discord-haskell-1.18.0
 
 # Override default flag values for project packages and extra-deps
 # flags: {}
