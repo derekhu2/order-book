@@ -16,6 +16,7 @@ import Discord.Types (UserId)
 
 data UserProfile = UserProfile
     { balance :: Int
+    , assets :: Map T.Text Int
     } deriving (Show, Generic)
 
 instance FromJSON UserProfile
@@ -23,6 +24,7 @@ instance ToJSON UserProfile
 
 data State = State 
     { users :: Map UserId UserProfile
+    , markets :: Map T.Text T.Text
     } deriving (Show, Generic)
 
 instance FromJSON State
