@@ -25,6 +25,10 @@ dependencies:
 - text
 - containers
 - aeson
+- bytestring
+- unliftio
+- directory
+- time
 
 ghc-options:
 - -Wall
