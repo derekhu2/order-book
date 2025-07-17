@@ -15,7 +15,8 @@ import State
 main :: IO ()
 main = do
     statePath <- getStatePath
-    stateMVar <- if doesFileExist statePath
+    exists <- doesFileExist statePath
+    stateMVar <- if exists
         then loadState statePath
         else do
             TIO.putStrLn "creating new state file"
