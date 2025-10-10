@@ -2,14 +2,12 @@
 
 module Main (main) where
 
-import qualified Data.Text as T
 import qualified Data.Text.IO as TIO
-import System.Environment (getEnv)
-import System.Directory (createDirectoryIfMissing, doesFileExist)
-import Control.Concurrent.MVar (MVar, newMVar)
+import System.Directory (doesFileExist)
+import Control.Concurrent.MVar (newMVar)
 
 import Bot (runBot)
-import Utils (getToken, getGuildId)
+import Utils (getToken)
 import State
 
 main :: IO ()
@@ -25,6 +23,5 @@ main = do
             return newState
             
     token <- getToken
-    guildId <- getGuildId
     TIO.putStrLn $ "Starting bot... "
     runBot token stateMVar

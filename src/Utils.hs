@@ -1,12 +1,10 @@
-module Utils where
+module Utils (getToken, getGuildId) where
 
 import qualified Data.Text as T
 import qualified Data.Text.IO as TIO
 import Text.Read (readMaybe)
 
-import Discord
 import Discord.Types
-import Discord.Requests as R
 
 getToken :: IO T.Text
 getToken = TIO.readFile "auth-token.secret"

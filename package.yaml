@@ -29,6 +29,7 @@ dependencies:
 - unliftio
 - directory
 - time
+- pqueue
 
 ghc-options:
 - -Wall

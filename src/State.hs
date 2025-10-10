@@ -1,18 +1,26 @@
 {-# LANGUAGE DeriveGeneric #-}
 
-module State where
+module State
+    ( UserProfile(..)
+    , State(..)
+    , emptyState
+    , loadState
+    , saveState
+    , setState
+    , getStatePath
+    ) where
 
 import GHC.Generics (Generic)
 import Data.Aeson (FromJSON, ToJSON, decode, encode)
 import Data.Map (Map)
 import qualified Data.Map as M
 import qualified Data.ByteString.Lazy as BSL
-import Control.Monad.IO.Class (liftIO)
 import Control.Concurrent.MVar (MVar, newMVar, readMVar, modifyMVar_)
-import Data.Time.Clock (getCurrentTime)
 import System.Directory (createDirectoryIfMissing, getXdgDirectory, XdgDirectory(..))
+import qualified Data.Text as T
 
 import Discord.Types (UserId)
+import Book (Market)
 
 data UserProfile = UserProfile
     { balance :: Int
@@ -24,14 +32,14 @@ instance ToJSON UserProfile
 
 data State = State 
     { users :: Map UserId UserProfile
-    , markets :: Map T.Text T.Text
+    , markets :: Map T.Text Market
     } deriving (Show, Generic)
 
 instance FromJSON State
 instance ToJSON State
 
 emptyState :: State
-emptyState = State M.empty
+emptyState = State M.empty M.empty
 
 -- | helpers
 

@@ -1,19 +1,17 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Bot where
+module Bot (runBot) where
 
 import Control.Monad (when, void, forever)
 import Control.Concurrent (forkIO, threadDelay)
 import Control.Concurrent.MVar (MVar)
-import System.Directory (doesFileExist)
 import qualified Data.Text as T
 import qualified Data.Text.IO as TIO
 
 import Discord
 import Discord.Types
-import qualified Discord.Requests as R
 
-import Commands.Common
+import Commands.Common (handlePrefixedCommand)
 import State
 
 runBot :: T.Text -> MVar State -> IO ()

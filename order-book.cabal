@@ -25,8 +25,10 @@ source-repository head
 
 library
   exposed-modules:
+      Book
       Bot
       Commands.Common
+      Commands.Market
       Commands.Portfolio
       State
       Utils
@@ -44,6 +46,7 @@ library
     , containers
     , directory
     , discord-haskell
+    , pqueue
     , text
     , time
     , unliftio
@@ -66,6 +69,7 @@ executable order-book-exe
     , directory
     , discord-haskell
     , order-book
+    , pqueue
     , text
     , time
     , unliftio
@@ -89,6 +93,7 @@ test-suite order-book-test
     , directory
     , discord-haskell
     , order-book
+    , pqueue
     , text
     , time
     , unliftio
